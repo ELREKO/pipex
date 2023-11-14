@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main() {
+int main(int ac, char **ag, char **envp) {
+    int i;
+
+    i = 0;
     char *args[] = { "/bin/ls", "-l", NULL }; // Beispielargumente für den Befehl
 
     // Ausführung des ls-Befehls

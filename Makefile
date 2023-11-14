@@ -5,7 +5,9 @@ NAME	= pipex
 SRC_PATH = src/
 OBJ_PATH = obj/
 
-SRC  = 	pipex.c
+SRC  = 	pipex.c \
+	utiles_ft_strnstr.c \
+	utiles_ft_strspilt.c
 
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ		= $(SRC:.c=.o)
@@ -14,8 +16,6 @@ INCS	= -I ./includes/
 
 all: $(OBJ_PATH) $(NAME)
 
-allgdb: $(OBJ_PATH) $(NAME) -g
-
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
@@ -23,7 +23,7 @@ $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -g
 
 clean:
 	rm -rf $(OBJ_PATH)
