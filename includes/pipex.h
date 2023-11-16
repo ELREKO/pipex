@@ -5,20 +5,25 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include "../libft/libft.h"
 
-typedef struct s_list{
-    char *str_tmp;
-    char *str_path;
-}   t_list;
+typedef struct s_arg
+{
+    char    *inflile;
+    char    **cmd_1;
+    char    **cmd_2;
+    char    *outfile;
+    char    *path_1;
+    char    *path_2;
+}   t_arg;
 
-char	*ft_strnstr(const char *haystack, const char *needle,  unsigned int len);
-char	**ft_split(char const *s, char c);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size_dest);
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size_dest);
-char	*ft_strchr(const char *str, int ch);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_memmove(void *dest, const void *src, size_t n);
-char	*ft_strdup(const char *str);
+// errorhandling.c
+void ft_throw_error(char *str, t_arg **arg);
+void ft_free_struct_arg(t_arg **arg);
+void ft_free_str(char *str);
+void ft_free_map(char **map);
+
+// reading_arg.c
+ t_arg *ft_read_arg(char **arg, char **envp);
 
 #endif
