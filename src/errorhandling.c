@@ -29,29 +29,18 @@ void ft_free_str(char *str)
         free(str);
 }
 
+
 void ft_free_map(char **map)
 {
-    int i = 0;
-    while (map[i] != NULL)
+    int i_count;
+
+    if (map != NULL)
     {
-        free(map[i]);
-        i++;
+        i_count = 0; 
+        while (map[i_count] != NULL)
+            i_count++;
+        while (i_count >= 0)
+            free(map[i_count--]);
+        free(map);
     }
-    free(map);
 }
-
-// void ft_free_map(char **map)
-// {
-//     int i_count;
-
-//     if (map != NULL)
-//     {
-//         i_count = 0; 
-//         while (map[i_count] != NULL)
-//             i_count++;
-//         while (i_count >= 0)
-//             free(map[i_count--]);
-//         free(map);
-//     }
-//     //map = NULL;
-// }

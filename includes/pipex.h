@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
+
 #include "../libft/libft.h"
 
 typedef struct s_arg
@@ -25,5 +27,8 @@ void ft_free_map(char **map);
 
 // reading_arg.c
  t_arg *ft_read_arg(char **arg, char **envp);
+
+ // foring.c
+ void ft_parent(t_arg **list);
 
 #endif

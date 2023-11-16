@@ -16,8 +16,13 @@ t_arg *ft_read_arg(char **arg, char **envp)
     list->cmd_2 = ft_split(arg[3], ' ');
     list->outfile = ft_strdup(arg[4]);
     ft_get_path(envp, &list);
+   free(list->cmd_1[0]);
+   free(list->cmd_2[0]);
+   list->cmd_1[0] = ft_strdup(list->path_1);
+   list->cmd_2[0] = ft_strdup(list->path_2);
     return (list);   
 }
+
 
 // checking with acces is the path excahanablie 
 static void ft_get_path (char **envp, t_arg **arg)
@@ -32,21 +37,19 @@ static void ft_get_path (char **envp, t_arg **arg)
     {
         str_tmp = ft_strjoin(str_split[i_count++], "/");
         (*arg)->path_1 = ft_strjoin(str_tmp, (*arg)->cmd_1[0]);
-        (*arg)->path_2 = ft_strjoin(str_tmp, (*arg)->cmd_2[0]);
+        (*arg)->path_2 = ft_strjoin(str_tmp, (*arg)->cmd_2[0]);\
+        free(str_tmp);
         if (access(((*arg)->path_1), X_OK) == 0 && access(((*arg)->path_2), X_OK) == 0)
             break;
-        free(str_tmp);
+        if (str_split[i_count + 1] == NULL)
+        {
+            ft_free_map(str_split);
+            ft_throw_error("ERROR: one or more cmd not executable\n", arg);
+        }
         free((*arg)->path_1);
         free((*arg)->path_2);
     }
-    free(str_tmp);
-    if (str_split[i_count] == NULL)
-    {
-        ft_free_map(str_split);
-        ft_throw_error("ERROR: no access path\n", arg);
-    }
-    else
-        ft_free_map(str_split);
+    ft_free_map(str_split);
 }
 
 // search the paht from the enviorment and split it into diffrent path

@@ -6,6 +6,7 @@ SRC_PATH = src/
 OBJ_PATH = obj/
 
 SRC = errorhandling.c \
+	forking.c \
 	main.c \
 	reading_arg.c
 
