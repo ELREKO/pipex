@@ -1,9 +1,14 @@
 #include "../includes/pipex.h"
+#include <errno.h>
 
-void ft_throw_error(char *str, t_arg **arg)
+void ft_throw_error(const char *msg, t_arg **arg)
 {
     ft_free_struct_arg(arg);
-    write(1, str, ft_strlen(str));
+    if (ft_strncmp(strerror(errno), "Success",
+        ft_strlen(strerror(errno))) == 0)
+        write(1, msg, ft_strlen(msg));
+    else
+        perror(msg);
     exit (0);
 }
 

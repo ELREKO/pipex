@@ -20,7 +20,7 @@ typedef struct s_arg
 }   t_arg;
 
 // errorhandling.c
-void ft_throw_error(char *str, t_arg **arg);
+void ft_throw_error(const char *msg, t_arg **arg);
 void ft_free_struct_arg(t_arg **arg);
 void ft_free_str(char *str);
 void ft_free_map(char **map);
