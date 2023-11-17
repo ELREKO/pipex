@@ -29,6 +29,6 @@ void ft_free_map(char **map);
  t_arg *ft_read_arg(char **arg, char **envp);
 
  // foring.c
- void ft_parent(t_arg **list);
+void ft_forking(t_arg **list);
 
 #endif

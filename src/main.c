@@ -8,11 +8,19 @@ int main(int ac, char **ag, char **envp)
     // Argument Reading! 
     argument = NULL;
     if (ac != 5)
+    {
         ft_throw_error("Missing arguments \n", &argument);
+    }    
+    
     else
+    {
         argument = ft_read_arg(ag, envp);
+    }
+        
 
-    ft_parent(&argument);
+
+
+    ft_forking(&argument);
 
 
     printf ("Arguments\n-------\nInfile|%s|\ncmd 1 |%s|\ncmd 1 flag |%s|\ncmd 2 |%s|\ncmd 2 flag |%s|\nOutfile |%s|\nPath 1 |%s|\nPath 2 |%s|\n", 
