@@ -1,5 +1,6 @@
 #include "../includes/pipex.h"
 
+static void ft_check_infile(t_arg **list);
 static void ft_get_path (char **envp, t_arg **arg);
 static char **ft_path_filter(char **envp);
 
@@ -12,6 +13,7 @@ t_arg *ft_read_arg(char **arg, char **envp)
     if (!list)
         ft_throw_error("ERROR: malloc", &list);
     list->inflile = ft_strdup(arg[1]);
+    ft_check_infile(&list);
     list->cmd_1 = ft_split(arg[2], ' ');
     list->cmd_2 = ft_split(arg[3], ' ');
     list->outfile = ft_strdup(arg[4]);
@@ -23,6 +25,15 @@ t_arg *ft_read_arg(char **arg, char **envp)
     return (list);   
 }
 
+static void ft_check_infile(t_arg **list)
+{
+    int fd;
+
+    fd = open((*list)->inflile, O_RDONLY);
+    if (fd == -1)
+        ft_throw_error("ERROR: File open for input", list);
+    close(fd);
+}
 
 // checking with acces is the path excahanablie 
 static void ft_get_path (char **envp, t_arg **arg)
