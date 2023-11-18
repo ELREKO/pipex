@@ -1,5 +1,5 @@
 CC      = cc
-CFLAGS  = -Wall -Wextra 
+CFLAGS  = -Wall -Wextra -Werror
 NAME    = pipex
 
 SRC_PATH = src/

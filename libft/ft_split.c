@@ -6,7 +6,7 @@
 /*   By: rkost <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:20:06 by rkost             #+#    #+#             */
-/*   Updated: 2023/05/29 16:21:26 by rkost            ###   ########.fr       */
+/*   Updated: 2023/11/18 11:01:50 by rkost            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,5 @@ static void	*write_split(char **split, char *str, char sep)
 			word++;
 		}
 	}
-	return ((void *)1);
+	return ((void *) 1);
 }
-
